@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  microservice:
+    build: .
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    networks:
+      - rabbitmq-network
+    restart: always
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: 'uprev-rabbitmq'
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+      RABBITMQ_PORT: ${RABBITMQ_PORT}
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+    ports:
+      - ${RABBITMQ_PORT}:5672
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - rabbitmq-network
+
+volumes:
+  rabbitmq-data:
+
+networks:
+  rabbitmq-network:
+    external: true
+    driver: bridge
