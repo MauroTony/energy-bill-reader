@@ -1,82 +1,75 @@
-ref_colunas_model1 = ["59,135,228,415,540,640,752"]
-ref_colunas_model2 = ["59,174,415,557,632,700"]
-ref_colunas_model3 = ["59,134,215,360,535,607,673"]
-ref_colunas_model4 = ["59,131,220,430,485,550,665,736"]
-ref_colunas_model5 = ["59,96,204,429,487,552,691"]
-ref_colunas_model6 = ["59,131,219,430,484,550,661,733"]
+TABLE_AREA_CONTA_MES_VENCIMENTO_TOTAL = "30,684,300,652"
+TABLE_AREA_DATAS_LEITURAS = "315,768,577,739"
+TABLE_AREA_ITENS_FATURA = "17,558,429,381"
+TABLE_AREA_MEDIDORES = "17,365,344,260"
+TABLE_AREA_GRANDEZAS_CONTRATADAS = "430,511,560,384"
+TABLE_AREA_TRIBUTOS = "432,564,574,529"
+TABLE_AREA_INFO_CONSUMO = "345,336,460,288"
+TABLE_AREA_APRESENTACAO = "465,337,565,320"
+TABLE_AREA_RESOLUCAO = "465,304,565,290"
+TABLE_AREA_RESERVADO_FISICO = "354,366,554,350"
+TABLE_AREA_PARCEIRO_DE_NEGOCIO = "237,733,305,716"
+TABLE_AREA_CONTA = "238,705,305,687"
+TABLE_AREA_TENSAO = "18,766,320,757"
 
-modelo1 = [
-    "seq",
-    "NIT",
-    "Código Emp.",
-    "Origem do Vínculo",
-    "Matrícula do\nTrabalhador",
-    "Tipo Filiado no\nVínculo",
-    "Data Início Data Fim",
-    "Últ. Remun.",
-]
-modelo2 = [
-    "seq",
-    "NIT",
-    "Origem do Vínculo",
-    "Tipo Filiado no Vínculo",
-    "Data Início",
-    "Data Fim",
-    "Indicadores",
-]
-modelo3 = [
-    "seq",
-    "NIT",
-    "NB",
-    "Origem do Vínculo",
-    "Espécie",
-    "Data Início",
-    "Data Fim",
-    "Situação",
-]
+COLUNA_ITENS_FATURA = "140,180,240,283,339,383"
+COLUNA_DATAS_LEITURAS = "360,417,472,515"
+COLUNA_CONTA_MES_VENCIMENTO_TOTAL = "106,200"
+COLUNA_MEDIDORES = "61,126,210,240,273,302"
+COLUNA_GRANDEZAS_CONTRATADAS = "560"
+COlUNA_TRIBUTOS = "464,502,540"
+COLUNA_INFO_CONSUMO = "458"
+COLUNA_APRESENTACAO = "560"
+COLUNA_RESOLUCAO = "560"
+COLUNA_RESERVADO_FISICO = "550"
+COLUNA_PARCEIRO_DE_NEGOCIO = "303"
+COLUNA_CONTA = "303"
+COLUNA_TENSAO = "319"
 
-modelo4 = [
-    "seq",
-    "NIT",
-    "CNPJ/CEI/CPF",
-    "Origem do Vínculo",
-    "Data Início",
-    "Data Fim",
-    "Tipo Filiado no Vínculo",
-    "Últ. Remun.",
-    "Indicadores",
-]
-modelo5 = [
-    "seq",
-    "NIT",
-    "Origem do Vínculo",
-    "Data Início",
-    "Data Fim",
-    "Tipo Filiado no Vínculo",
-    "Indicadores",
-]
-modelo6 = [
-    "seq",
-    "NIT",
-    "Código Emp.",
-    "Origem do Vínculo",
-    "Data Início",
-    "Data Fim",
-    "Tipo Filiado no Vínculo",
-    "Últ. Remun.",
-    "Indicadores",
+TABLES_AREAS = [
+    TABLE_AREA_CONTA_MES_VENCIMENTO_TOTAL,
+    TABLE_AREA_DATAS_LEITURAS,
+    TABLE_AREA_ITENS_FATURA,
+    TABLE_AREA_MEDIDORES,
+    TABLE_AREA_GRANDEZAS_CONTRATADAS,
+    TABLE_AREA_TRIBUTOS,
+    TABLE_AREA_INFO_CONSUMO,
+    TABLE_AREA_APRESENTACAO,
+    TABLE_AREA_RESOLUCAO,
+    TABLE_AREA_RESERVADO_FISICO,
+    TABLE_AREA_PARCEIRO_DE_NEGOCIO,
+    TABLE_AREA_CONTA,
+    TABLE_AREA_TENSAO,
 ]
 
-
-modelos = [
-    {"modelo": modelo1, "colunas": ref_colunas_model1},
-    {"modelo": modelo2, "colunas": ref_colunas_model2},
-    {"modelo": modelo3, "colunas": ref_colunas_model3},
-    {"modelo": modelo4, "colunas": ref_colunas_model4},
-    {"modelo": modelo6, "colunas": ref_colunas_model6},
-    {"modelo": modelo5, "colunas": ref_colunas_model5},
+COLUNAS = [
+    COLUNA_CONTA_MES_VENCIMENTO_TOTAL,
+    COLUNA_DATAS_LEITURAS,
+    COLUNA_ITENS_FATURA,
+    COLUNA_MEDIDORES,
+    COLUNA_GRANDEZAS_CONTRATADAS,
+    COlUNA_TRIBUTOS,
+    COLUNA_INFO_CONSUMO,
+    COLUNA_APRESENTACAO,
+    COLUNA_RESOLUCAO,
+    COLUNA_RESERVADO_FISICO,
+    COLUNA_PARCEIRO_DE_NEGOCIO,
+    COLUNA_CONTA,
+    COLUNA_TENSAO,
 ]
 
-ref_table_remuneracoes = ["115,205,235,375,470,554,640,730"]
-ref_table_contribuicoes = ["96,156,225,322,418,499,559,626,725"]
-colunas_remuneracoes = [ref_table_remuneracoes, ref_table_contribuicoes]
+INDEX_TABLES = {
+    "0": "TENSAO",
+    "1": "DATAS_LEITURAS",
+    "2": "PARCEIRO_DE_NEGOCIO",
+    "3": "CONTA",
+    "4": "CONTA_MES_VENCIMENTO_TOTAL",
+    "5": "TRIBUTOS",
+    "6": "GRANDEZAS_CONTRATADAS",
+    "7": "ITENS_FATURA",
+    "8": "RESERVADO_FISICO",
+    "9": "APRESENTACAO",
+    "10": "RESOLUCAO",
+    "11": "INFO_CONSUMO",
+    "12": "MEDIDORES"
+}

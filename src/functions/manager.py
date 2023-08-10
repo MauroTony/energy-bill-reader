@@ -27,44 +27,31 @@ class Manager:
     def callback_new_message(
         channel: BlockingChannel, body: bytes, delivery_tag: int
     ) -> bool:
-
-        data = json.loads(body)
-        data = data["data"]
-        pdf_base64 = data["pdfBase64"]
-        id = data["beneficiaryId"]
-        print(f"Recebendo dados beneficiaryId:{id}")
-
         timestamp = int(time.time())
         nome_arquivo = f"pdf_{timestamp}.pdf"
-        pdf_content = base64.b64decode(pdf_base64)
-
-        with open(nome_arquivo, "wb") as file:
-            file.write(pdf_content)
         try:
-            if data.get("apiName") == "company-api":
-                queue_name = config.RABBITMQ_PUBLISH_QUEUE2
-            elif data.get("apiName") == "api":
-                queue_name = config.RABBITMQ_PUBLISH_QUEUE1
-            else:
-                raise Exception("apiName nao reconhecido")
+            data = json.loads(body)
+            data = data["data"]
+            pdf_base64 = data["pdfBase64"]
+            id = data["Id"]
+            print(f"Recebendo dados do id: {id}")
+
+            pdf_content = base64.b64decode(pdf_base64)
+            with open(nome_arquivo, "wb") as file:
+                file.write(pdf_content)
+            queue_name = config.RABBITMQ_PUBLISH_QUEUE
 
             leitor = LeitorExtrato(nome_arquivo)
-            leitor.identifica_tabelas()
-            leitor.extrair_identificacao()
-            leitor.extrair_relacoes()
-            result = leitor.resultado()
-
-            response = Result_final(apiName=data.get("apiName"), beneficiaryId=int(id), data=result)
-
+            leitor.extrair_dados()
             content = {
                 "pattern": "handle_extract",
-                "data": response.dict()
+                "data": leitor.dados
             }
             channel.basic_publish(
                 exchange="", routing_key=queue_name, body=json.dumps(content)
             )
             channel.basic_ack(delivery_tag=delivery_tag)
-            print(f"Enviando dados beneficiaryId:{id}, api:{data.get('apiName')}")
+            print(f"Enviando dados do Id:{id}")
         except Exception as e:
             print("Exception:", e)
         finally:

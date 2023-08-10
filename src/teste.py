@@ -31,9 +31,8 @@ def enviar_pdf_para_fila(pdf_path):
     pdf_base64 = base64.b64encode(pdf_content).decode('utf-8')
     content = {
         "data": {
-            "beneficiaryId": "1",
-            "pdfBase64": pdf_base64,
-            "apiName": "api"
+            "Id": "1",
+            "pdfBase64": pdf_base64
         }
     }
     # Envia o conteúdo do PDF para a fila
