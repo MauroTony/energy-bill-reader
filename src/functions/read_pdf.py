@@ -156,4 +156,4 @@ class LeitorExtrato:
             "grandezas": grandezas,
             "medidores": medidores
         }
-        print(self.dados)
+        return self.dados

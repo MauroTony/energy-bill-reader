@@ -11,8 +11,7 @@ class GeneralConfig(BaseModel):
     RABBITMQ_HOST = os.getenv('RABBITMQ_HOST')
     RABBITMQ_PORT = os.getenv('RABBITMQ_PORT')
     RABBITMQ_SUBSCRIBE_QUEUE = os.getenv('RABBITMQ_SUBSCRIBE_QUEUE')
-    RABBITMQ_PUBLISH_QUEUE1 = os.getenv('RABBITMQ_PUBLISH_QUEUE1')
-    RABBITMQ_PUBLISH_QUEUE2 = os.getenv('RABBITMQ_PUBLISH_QUEUE2')
+    RABBITMQ_PUBLISH_QUEUE = os.getenv('RABBITMQ_PUBLISH_QUEUE')
 
     # config system enviroments
     THREADS = int(os.getenv('THREADS'))
