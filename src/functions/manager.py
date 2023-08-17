@@ -5,7 +5,6 @@ import base64
 
 from pika.adapters.blocking_connection import BlockingChannel
 from .read_pdf import LeitorExtrato
-from models import Result_final
 from config import get_config
 
 config = get_config()

@@ -27,8 +27,8 @@ class LeitorExtrato:
         for index in range(len(tables)):
             dataframe = tables[index].df
             dict_data = dataframe.to_dict()
-            #
-            match INDEX_TABLES[index]:
+            #print(json.dumps(dict_data, indent=4))
+            match INDEX_TABLES[str(index)]:
                 case "TENSAO":
                     dados = dict_data[0][0].split("     ")
                     for dado in dados:
