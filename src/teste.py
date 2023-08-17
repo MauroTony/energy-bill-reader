@@ -13,7 +13,7 @@ def enviar_pdf_para_fila(pdf_path):
     )
     parameters = broker.ConnectionParameters(
         credentials=credentials,
-        host=os.getenv("RABBITMQ_HOST"),
+        host="localhost",
         port=int(os.getenv("RABBITMQ_PORT")),
         virtual_host="/",
         heartbeat=3600
@@ -22,7 +22,7 @@ def enviar_pdf_para_fila(pdf_path):
     channel = connection.channel()
 
     # Declara a fila
-    queue_name = 'UPREV_READ_PDF_QUEUE'
+    queue_name = 'TESTE_READ_PDF_QUEUE'
     channel.queue_declare(queue=queue_name, auto_delete=False)
 
     # Lê o conteúdo do arquivo PDF
@@ -42,4 +42,4 @@ def enviar_pdf_para_fila(pdf_path):
     connection.close()
 
 # Exemplo de uso da função
-enviar_pdf_para_fila('pdfs/extrato(2).pdf')
+enviar_pdf_para_fila('pdfs/10-22.pdf')

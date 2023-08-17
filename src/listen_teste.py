@@ -11,7 +11,7 @@ def escutar_fila_teste2():
     )
     parameters = broker.ConnectionParameters(
         credentials=credentials,
-        host=os.getenv("RABBITMQ_HOST"),
+        host="localhost",
         port=int(os.getenv("RABBITMQ_PORT")),
         virtual_host="/",
         heartbeat=3600
@@ -20,7 +20,7 @@ def escutar_fila_teste2():
     channel = connection.channel()
 
     # Declara a fila
-    queue_name = 'UPREV_API_IMPORT_PDF_QUEUE'
+    queue_name = 'TESTE_API_IMPORT_PDF_QUEUE'
     channel.queue_declare(queue=queue_name)
 
     # Função de callback para tratar as mensagens recebidas

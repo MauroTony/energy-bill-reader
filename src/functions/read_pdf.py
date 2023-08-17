@@ -1,6 +1,5 @@
 import camelot
-from src.models import *
-import json
+from models import *
 
 class LeitorExtrato:
     def __init__(self, path_file):
@@ -28,7 +27,7 @@ class LeitorExtrato:
             dataframe = tables[index].df
             dict_data = dataframe.to_dict()
             #print(json.dumps(dict_data, indent=4))
-            match INDEX_TABLES[str(index)]:
+            match INDEX_TABLES[index]:
                 case "TENSAO":
                     dados = dict_data[0][0].split("     ")
                     for dado in dados:
@@ -76,7 +75,7 @@ class LeitorExtrato:
                     for key, value in dict_data[0].items():
                         if "Demanda Contratada \u00danica (kW): " in value:
                             value_strip = value.split("Demanda Contratada \u00danica (kW): ")
-                            grandezas["Demanda Contratada Única (kW)"] = value_strip[1]
+                            grandezas["Demanda Contratada Unica (kW)"] = value_strip[1]
                         elif "Demanda Contratada Ponta (kW): " in value:
                             value_strip = value.split("Demanda Contratada Ponta (kW): ")
                             grandezas["Demanda Contratada Ponta (kW)"] = value_strip[1]
@@ -85,7 +84,7 @@ class LeitorExtrato:
                             grandezas["Demanda Contratada Fora Ponta (kW)"] = value_strip[1]
                         elif "Dem. Reserva Cap. \u00danica (kW): " in value:
                             value_strip = value.split("Dem. Reserva Cap. \u00danica (kW): ")
-                            grandezas["Dem. Reserva Cap. Única"] = value_strip[1]
+                            grandezas["Dem. Reserva Cap. Unica"] = value_strip[1]
                         elif "Dem. Reserva Cap. Fora Ponta (kW): " in value:
                             value_strip = value.split("Dem. Reserva Cap. Fora Ponta (kW): ")
                             grandezas["Dem. Reserva Cap. Fora Ponta (kW)"] = value_strip[1]
@@ -134,16 +133,16 @@ class LeitorExtrato:
                     for key, value in dict_data[0].items():
                         if "Consumo M\u00e9dio Di\u00e1rio (kWh):" in value:
                             value_strip = value.split("Consumo M\u00e9dio Di\u00e1rio (kWh): ")
-                            info_consumo["Consumo Médio Diário (kWh)"] = value_strip[1]
+                            info_consumo["Consumo Medio Diario (kWh)"] = value_strip[1]
                         if "M\u00e9dia dos 12 meses (kWh): " in value:
                             value_strip = value.split("M\u00e9dia dos 12 meses (kWh): ")
-                            info_consumo["Média dos 12 meses (kWh)"] = value_strip[1]
+                            info_consumo["Media dos 12 meses (kWh)"] = value_strip[1]
                         if "Dem. M\u00e1x. F. Ponta (kW): " in value:
                             value_strip = value.split("Dem. M\u00e1x. F. Ponta (kW): ")
-                            info_consumo["Dem. Máx. F. Ponta (kW)"] = value_strip[1]
+                            info_consumo["Dem. Max. F. Ponta (kW)"] = value_strip[1]
                         if "Dem. M\u00e1x. Ponta (kW): " in value:
                             value_strip = value.split("Dem. M\u00e1x. Ponta (kW): ")
-                            info_consumo["Dem. Máx. Ponta (kW)"] = value_strip[1]
+                            info_consumo["Dem. Max. Ponta (kW)"] = value_strip[1]
 
                 case "MEDIDORES":
                     for key, value in dict_data[0].items():

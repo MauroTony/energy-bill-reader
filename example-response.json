@@ -1,0 +1,188 @@
+{
+    "pattern": "handle_extract",
+    "id": "1",
+    "data": {
+        "data_leituras": {
+            "Leitura Anterior": "30/09/2022",
+            "Leitura Atual": "31/10/2022",
+            "Numero de Dias": "31",
+            "Proxima Leitura": "30/11/2022"
+        },
+        "dados_gerais": {
+            "Tensao Nominal Disp": "13.800",
+            "Lim Min": "12.834 V",
+            "Lim Max": "14.490 V",
+            "Tipo de Tarifa": "A4_VD",
+            "Parceiro de Negocio": "2143",
+            "Conta Contrato": "1472720",
+            "Fator de Potencia": "0,91",
+            "Mes": "10/2022",
+            "Vencimento": "24/11/2022",
+            "Total": "R$ 61.769,65",
+            "Reservado Fisico": "882E.3E71.21D6.CF6B.8DFA.7429.69D0.DD94",
+            "data_apresentacao": "01/11/2022",
+            "resolucao": "3033/22"
+        },
+        "dados_tributos": {
+            "ICMS": {
+                "base": "61.326,47",
+                "aliquota": "19,0000",
+                "valor": "11.652,03"
+            },
+            "PIS": {
+                "base": "49.674,44",
+                "aliquota": "1,1546",
+                "valor": "573,54"
+            },
+            "COFINS": {
+                "base": "49.674,44",
+                "aliquota": "5,3181",
+                "valor": "2.641,74"
+            }
+        },
+        "itens_fatura": {
+            "Consumo Fora Ponta (kWh)": {
+                "quantidade": "50.209,92",
+                "preco_unit_com_tributos": "0,513126",
+                "tarifca_unit": "0,388730",
+                "pis/confins": "1.350,78",
+                "icms": "4.895,17",
+                "valor": "25.764,04"
+            },
+            "Consumo Ponta (kWh)": {
+                "quantidade": "8.798,40",
+                "preco_unit_com_tributos": "2,934416",
+                "tarifca_unit": "2,223030",
+                "pis/confins": "1.353,62",
+                "icms": "4.905,45",
+                "valor": "25.818,17"
+            },
+            "Demanda Ativa (kW)": {
+                "quantidade": "264,96",
+                "preco_unit_com_tributos": "32,564576",
+                "tarifca_unit": "24,670000",
+                "pis/confins": "452,37",
+                "icms": "1.639,38",
+                "valor": "8.628,31"
+            },
+            "Demanda Ultrapassagem (kW)": {
+                "quantidade": "14,96",
+                "preco_unit_com_tributos": "65,128342",
+                "tarifca_unit": "49,340000",
+                "pis/confins": "51,08",
+                "icms": "185,12",
+                "valor": "974,32"
+            },
+            "Consumo Reativo Excedente NP (kVAr)": {
+                "quantidade": "7,20",
+                "preco_unit_com_tributos": "0,375000",
+                "tarifca_unit": "0,283870",
+                "pis/confins": "0,15",
+                "icms": "0,51",
+                "valor": "2,70"
+            },
+            "Consumo Reativo Excedente FP (kVAr)": {
+                "quantidade": "370,80",
+                "preco_unit_com_tributos": "0,374676",
+                "tarifca_unit": "0,283870",
+                "pis/confins": "7,28",
+                "icms": "26,40",
+                "valor": "138,93"
+            },
+            "Cip-Ilum Pub Pref Munic": {
+                "valor": "443,18"
+            }
+        },
+        "info_consumo": {
+            "Consumo Medio Diario (kWh)": "1.903,49",
+            "Media dos 12 meses (kWh)": "53.439,63",
+            "Dem. Max. F. Ponta (kW)": "264,96",
+            "Dem. Max. Ponta (kW)": "207,36"
+        },
+        "grandezas": {
+            "Demanda Contratada Unica (kW)": "250,00"
+        },
+        "medidores": [
+            {
+                "36050000936": {
+                    "grandeza": "Consumo Fora Ponta",
+                    "posto_horario": "Consumo Ativo FP Reg",
+                    "leitura_anterior": "1.662.863",
+                    "leitura_atual": "1.732.599",
+                    "const_medidor": "0,7200",
+                    "consumo": "50.209,92 kWh"
+                }
+            },
+            {
+                "36050000936": {
+                    "grandeza": "Consumo Ponta",
+                    "posto_horario": "Consumo Ativo NP Reg",
+                    "leitura_anterior": "289.293",
+                    "leitura_atual": "301.513",
+                    "const_medidor": "0,7200",
+                    "consumo": "8.798,40 kWh"
+                }
+            },
+            {
+                "36050000936": {
+                    "grandeza": "Demanda Fora Ponta",
+                    "posto_horario": "Demanda Ativa FP Reg",
+                    "leitura_anterior": "0",
+                    "leitura_atual": "92",
+                    "const_medidor": "2,8800",
+                    "consumo": "264,96 kW"
+                }
+            },
+            {
+                "36050000936": {
+                    "grandeza": "Demanda Ponta",
+                    "posto_horario": "Demanda Ativa NP Reg",
+                    "leitura_anterior": "0",
+                    "leitura_atual": "72",
+                    "const_medidor": "2,8800",
+                    "consumo": "207,36 kW"
+                }
+            },
+            {
+                "36050000936": {
+                    "grandeza": "Dem. Reat. Exced. FP.",
+                    "posto_horario": "Demanda DMCR FP Reg",
+                    "leitura_anterior": "0",
+                    "leitura_atual": "360",
+                    "const_medidor": "0,7200",
+                    "consumo": "259,20 kVAr"
+                }
+            },
+            {
+                "36050000936": {
+                    "grandeza": "Dem. Reat. Exced. Pta",
+                    "posto_horario": "Demanda DMCR NP Reg",
+                    "leitura_anterior": "0",
+                    "leitura_atual": "266",
+                    "const_medidor": "0,7200",
+                    "consumo": "191,52 kVAr"
+                }
+            },
+            {
+                "36050000936": {
+                    "grandeza": "Reat. Exced. F. Ponta",
+                    "posto_horario": "Consumo Reativo Exced FP Reg",
+                    "leitura_anterior": "15.788",
+                    "leitura_atual": "16.303",
+                    "const_medidor": "0,7200",
+                    "consumo": "370,80 kVAr"
+                }
+            },
+            {
+                "36050000936": {
+                    "grandeza": "Reat. Exced. Ponta",
+                    "posto_horario": "Consumo Reativo Exced NP Reg",
+                    "leitura_anterior": "866",
+                    "leitura_atual": "876",
+                    "const_medidor": "0,7200",
+                    "consumo": "7,20 kVAr"
+                }
+            }
+        ]
+    }
+}

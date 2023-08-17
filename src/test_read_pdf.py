@@ -1,8 +1,7 @@
 from functions import LeitorExtrato
 import json
 
-pdf = "01-23"
-
+pdf = "02-23"
 leitor = LeitorExtrato(f"pdfs/{pdf}.pdf")
 result = leitor.extrair_dados()
 content = json.dumps(result, indent=4)

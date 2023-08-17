@@ -44,8 +44,11 @@ class Manager:
             leitor.extrair_dados()
             content = {
                 "pattern": "handle_extract",
+                "id": id,
                 "data": leitor.dados
             }
+            result = json.dumps(content, indent=4)
+            print(result)
             channel.basic_publish(
                 exchange="", routing_key=queue_name, body=json.dumps(content)
             )
