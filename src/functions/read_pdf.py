@@ -27,11 +27,20 @@ class LeitorExtrato:
         for index in range(len(tables)):
             dataframe = tables[index].df
             dict_data = dataframe.to_dict()
-            #print(json.dumps(dict_data, indent=4))
-            match INDEX_TABLES[str(index)]:
+            #
+            match INDEX_TABLES[index]:
                 case "TENSAO":
-                    #print(json.dumps(dict_data, indent=4))
-                    print("TENSAO")
+                    dados = dict_data[0][0].split("     ")
+                    for dado in dados:
+                        dado = dado.strip()
+                        if "Tens\u00e3o Nominal Disp: " in dado:
+                            dados_gerais["Tensao Nominal Disp"] = dado.split("Tens\u00e3o Nominal Disp: ")[1]
+                        elif "Lim Min: " in dado:
+                            dados_gerais["Lim Min"] = dado.split("Lim Min: ")[1]
+                        elif "Lim Max: " in dado:
+                            dados_gerais["Lim Max"] = dado.split("Lim Max: ")[1]
+                        elif "Tipo de Tarifa: " in dado:
+                            dados_gerais["Tipo de Tarifa"] = dado.split("Tipo de Tarifa: ")[1]
                 case "DATAS_LEITURAS":
                     data_leituras["Leitura Anterior"] = dict_data[1][1]
                     data_leituras["Leitura Atual"] = dict_data[2][1]
@@ -40,6 +49,12 @@ class LeitorExtrato:
 
                 case "PARCEIRO_DE_NEGOCIO":
                     dados_gerais["Parceiro de Negocio"] = dict_data[0][0]
+
+                case "FATOR_POTENCIA":
+                    for key, value in dict_data[0].items():
+                        if "FATOR DE POT\u00caNCIA" in value:
+                            dado = value.strip()
+                            dados_gerais["Fator de Potencia"] = dado.split("FATOR DE POT\u00caNCIA: ")[1]
 
                 case "CONTA":
                     dados_gerais["Conta Contrato"] = dict_data[0][0]
@@ -62,31 +77,31 @@ class LeitorExtrato:
                         if "Demanda Contratada \u00danica (kW): " in value:
                             value_strip = value.split("Demanda Contratada \u00danica (kW): ")
                             grandezas["Demanda Contratada Única (kW)"] = value_strip[1]
-                        if "Demanda Contratada Ponta (kW): " in value:
+                        elif "Demanda Contratada Ponta (kW): " in value:
                             value_strip = value.split("Demanda Contratada Ponta (kW): ")
                             grandezas["Demanda Contratada Ponta (kW)"] = value_strip[1]
-                        if "Demanda Contratada Fora Ponta (kW): " in value:
+                        elif "Demanda Contratada Fora Ponta (kW): " in value:
                             value_strip = value.split("Demanda Contratada Fora Ponta (kW): ")
                             grandezas["Demanda Contratada Fora Ponta (kW)"] = value_strip[1]
-                        if "Dem. Reserva Cap. \u00danica (kW): " in value:
+                        elif "Dem. Reserva Cap. \u00danica (kW): " in value:
                             value_strip = value.split("Dem. Reserva Cap. \u00danica (kW): ")
                             grandezas["Dem. Reserva Cap. Única"] = value_strip[1]
-                        if "Dem. Reserva Cap. Fora Ponta (kW): " in value:
+                        elif "Dem. Reserva Cap. Fora Ponta (kW): " in value:
                             value_strip = value.split("Dem. Reserva Cap. Fora Ponta (kW): ")
                             grandezas["Dem. Reserva Cap. Fora Ponta (kW)"] = value_strip[1]
-                        if "Dem. Reserva Cap. Ponta (kW): " in value:
+                        elif "Dem. Reserva Cap. Ponta (kW): " in value:
                             value_strip = value.split("Dem. Reserva Cap. Ponta (kW): ")
                             grandezas["Dem. Reserva Cap. Ponta (kW)"] = value_strip[1]
-                        if "Dem. de Gera\u00e7\u00e3o (kW): " in value:
+                        elif "Dem. de Gera\u00e7\u00e3o (kW): " in value:
                             value_strip = value.split("Dem. de Gera\u00e7\u00e3o (kW): ")
                             grandezas["Dem. de Geração (kW)"] = value_strip[1]
-                        if "Dem. de Dist. \u00danica (kW): " in value:
+                        elif "Dem. de Dist. \u00danica (kW): " in value:
                             value_strip = value.split("Dem. de Dist. \u00danica (kW): ")
                             grandezas["Dem. de Dist. Única (kW)"] = value_strip[1]
-                        if "Dem. de Dist. De Ponta (kW): " in value:
+                        elif "Dem. de Dist. De Ponta (kW): " in value:
                             value_strip = value.split("Dem. de Dist. De Ponta (kW): ")
                             grandezas["Dem. de Dist. De Ponta (kW)"] = value_strip[1]
-                        if "Dem. de Dist. Fora Ponta (kW): " in value:
+                        elif "Dem. de Dist. Fora Ponta (kW): " in value:
                             value_strip = value.split("Dem. de Dist. Fora Ponta (kW): ")
                             grandezas["Dem. de Dist. Fora Ponta (kW)"] = value_strip[1]
 
@@ -156,4 +171,5 @@ class LeitorExtrato:
             "grandezas": grandezas,
             "medidores": medidores
         }
-        print(self.dados)
+
+        return self.dados
